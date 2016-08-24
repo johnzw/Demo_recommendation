@@ -1,0 +1,55 @@
+<html>
+<meta charset="UTF-8">
+<form method="post">
+<p><a href="/" target="_top">返回首页</a>
+{% if next %}   
+<a href="/scan/{{next.decode('utf-8')}}" target="_top">下一页</a>
+{% endif %}
+</p>
+<p>{{prof}}</p>
+{% if items %}
+<p style="color:red;">标注方向：</p>   
+{% for item in items %}   
+	<p style="color:red;">{{item}}</p>
+{% endfor %}
+{% endif %}
+	<p>人工智能</p>
+	<ul>
+		<li>模式识别<input type="checkbox" name="hello" value="模式识别" ></li>
+		<li>机器学习<input type="checkbox" name="hello" value="机器学习" ></li>
+		<li>计算机视觉<input type="checkbox" name="hello" value="计算机视觉" ></li>
+		<li>语音语言<input type="checkbox" name="hello" value="语音语言" ></li>
+		<li>数据挖掘<input type="checkbox" name="hello" value="数据挖掘" ></li>
+	</ul>
+	
+	<p>信息系统</p>
+	<ul>
+		<li>数据库<input type="checkbox" name="hello" value="数据库" ></li>
+		<li>信息安全<input type="checkbox" name="hello" value="信息安全" ></li>
+		<li>高性能计算<input type="checkbox" name="hello" value="高性能计算" ></li>
+		<li>网络<input type="checkbox" name="hello" value="网络" ></li>
+		<li>软件工程<input type="checkbox" name="hello" value="软件工程" ></li>
+		<li>人机交互<input type="checkbox" name="hello" value="人机交互" ></li>
+		<li>算法理论<input type="checkbox" name="hello" value="算法理论" ></li>
+	</ul>
+
+	<p>电子科学</p>
+	<ul>
+		<li>半导体<input type="checkbox" name="hello" value="半导体" ></li>
+		<li>光电子<input type="checkbox" name="hello" value="光电子" ></li>
+		<li>传感器<input type="checkbox" name="hello" value="传感器" ></li>
+		<li>通信<input type="checkbox" name="hello" value="通信" ></li>
+		<li>集成电路<input type="checkbox" name="hello" value="集成电路" ></li>
+		<li>嵌入式<input type="checkbox" name="hello" value="嵌入式" ></li>
+	</ul>
+
+	<p>控制工程</p>
+	<ul>
+		<li>控制<input type="checkbox" name="hello" value="控制" ></li>
+		<li>测控<input type="checkbox" name="hello" value="测控" ></li>
+		<li>机器人<input type="checkbox" name="hello" value="机器人" ></li>
+		<li>交通<input type="checkbox" name="hello" value="交通" ></li>
+	</ul>
+	<input type="submit" style="height:200px; width:200px" />
+
+</form>

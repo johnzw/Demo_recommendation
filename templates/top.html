@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>stream</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<script type="text/javascript" src="/static/js/script.js"></script>
+</head>
+
+<body>
+<h1>热销商品</h1>
+<div id="main">
+	
+{% for img in top_items %}
+<div class = 'out_box'>
+<div class="box">
+<a href="/purchase/{{img}}" target="purchase" onclick="top.recommendation.location='/recommendation/{{img}}'"> <img src="/static/images/{{img}}.jpg"></a>
+</div>
+</div>
+{% endfor %}
+</div>
+
+<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+if ($('#back-to-top').length) {
+    var scrollTrigger = 300 //px
+        backToTop = function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > scrollTrigger) {
+                $('#back-to-top').addClass('show');
+            } else {
+                $('#back-to-top').removeClass('show');
+            }
+        };
+    backToTop();
+    $(window).on('scroll', function () {
+        backToTop();
+    });
+    $('#back-to-top').on('click', function (e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+}
+</script>
+</body>
+</html>

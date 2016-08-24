@@ -1,0 +1,63 @@
+<html>
+
+<head>
+	<title>purchase</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/cart.css">
+</head>
+<body>
+<h1>
+购物车
+</h1>
+{% if purchased_items%}
+
+<section class="shopping-cart">
+<ol class="ui-list shopping-cart--list" id="shopping-cart--list">
+	{% for item in purchased_items%}
+		<li class="_grid shopping-cart--list-item">
+		  <div class="_column product-image">
+		  	<div class="box">
+             <img class="product-image--img" src="/static/images/{{item}}.jpg" width="140px" height="140px" />
+            </div>
+          </div>
+          <div class="_column product-modifiers">
+            <button onclick="removeUpdate({{item}});">Remove</button>
+          </div>
+		</li>
+	{% endfor %}
+</ol>
+<section class="shopping-cart">
+{% endif %}
+</body>
+<script type="text/javascript">
+function removeUpdate(item){
+   top.purchase.location="/purchaseremove/"+item
+   top.recommendation.location="/recommendationremove/"+item
+}
+</script>
+<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+if ($('#back-to-top').length) {
+    var scrollTrigger = 300 //px
+        backToTop = function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > scrollTrigger) {
+                $('#back-to-top').addClass('show');
+            } else {
+                $('#back-to-top').removeClass('show');
+            }
+        };
+    backToTop();
+    $(window).on('scroll', function () {
+        backToTop();
+    });
+    $('#back-to-top').on('click', function (e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+}
+</script>
+</html>

@@ -1,0 +1,15 @@
+<html>
+<meta charset="UTF-8">
+
+<p>Total<label> {{all_files|length}}</label></p>
+<p>Have labed:<label> {{glo_dic|length}}</label></p>
+<p>Remaining:<label> {{all_files|length - glo_dic|length}}</label></p>
+
+{% for file_name in all_files %}
+<tr>
+	<p><a href="/scan/{{ file_name.decode('utf-8') }}">{{ file_name.decode('utf-8') }}</a>{% if file_name in glo_dic %}<label style="color:red;"> labled</label>{% endif %}</p>
+</tr>
+
+{% endfor %}
+
+</html>

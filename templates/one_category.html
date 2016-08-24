@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>stream</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<script type="text/javascript" src="/static/js/script_attribute.js"></script>
+</head>
+
+<body>
+	<div style="padding:15px 0 0 15px;"><a href="/category" style="text-decoration: none;">后退</a></div>
+<h1>{{dic[attribute].decode('utf-8')}}</h1>
+<div id="main">
+	
+{% for img in items %}
+<div class = 'out_box'>
+<div class="box">
+<a href="/purchase/{{img}}" target="purchase" onclick="top.recommendation.location='/recommendation/{{img}}'"> <img src="/static/images/{{img}}.jpg"></a>
+</div>
+</div>
+{% endfor %}
+</div>
+</body>
+
+<script type="text/javascript">
+window.onload=function(){
+	waterful('main','out_box');
+	var count = 1
+	// var dataInt={"data":[{"src":"5690.jpg"},{"src":"5690.jpg"},{"src":"5690.jpg"},{"src":"5690.jpg"}]}
+	window.onscroll=function(){
+		if(checkScrollSlide()){
+			var oParent = document.getElementById('main');
+			//get the data and load the data
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function() {
+    			if (xhttp.readyState == 4 && xhttp.status == 200) {
+    				
+      				res = xhttp.responseText;
+      				if (res != ""){
+	      				var dataInt = res.split("|");
+	      				count += 1
+	      				for(var i=0;i<dataInt.length;i++){
+							var oBox=document.createElement("div");
+							oBox.className="out_box";
+							oParent.appendChild(oBox);
+							var oPic=document.createElement("div");
+							oPic.className='box';
+							oBox.appendChild(oPic);
+							var oLink=document.createElement("a");
+							oLink.href="/purchase/"+dataInt[i];
+							oLink.target="purchase";
+							oLink.setAttribute("onclick","top.recommendation.location='/recommendation/"+dataInt[i]+"'"); 
+							oPic.appendChild(oLink);
+							var oImg=document.createElement("img");
+							oImg.width = "120px";
+							oImg.height = "120px";
+							oImg.src="/static/images/"+dataInt[i]+".jpg";
+							oLink.appendChild(oImg);
+							oBox.style.height= "142px";//it has some problems
+						}
+						//get the waterful
+						waterful('main','out_box');
+					};
+		    	}
+  			};
+  			xhttp.open("GET", "/category/{{attribute}}/"+count, false);
+  			xhttp.send();
+
+			
+		}
+	}
+}
+
+</script>
+<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+if ($('#back-to-top').length) {
+    var scrollTrigger = 300 //px
+        backToTop = function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > scrollTrigger) {
+                $('#back-to-top').addClass('show');
+            } else {
+                $('#back-to-top').removeClass('show');
+            }
+        };
+    backToTop();
+    $(window).on('scroll', function () {
+        backToTop();
+    });
+    $('#back-to-top').on('click', function (e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+}
+</script>
+</html>

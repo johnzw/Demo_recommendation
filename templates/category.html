@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>category</title>
+	<meta charset="utf-8"/>
+</head>
+<style type="text/css">
+/** {margin: 0; padding: 0;}
+ */
+div {
+  margin: 10px;
+}
+ 
+ul {
+  list-style-type: none;
+  width: 400px;
+}
+a{
+  text-decoration: none;
+}
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+h1{
+  text-align: center;
+  font: "FangSong";
+}
+li img {
+  float: left;
+  margin: 0 15px 0 0;
+  width: 100px;
+  height: 100px;
+}
+ 
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+li {
+  padding: 10px;
+  overflow: auto;
+}
+ 
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+</style>
+<body>
+<h1>产品分类</h1>
+<div>
+<ul>
+{% for attribute in attributes %}
+<li><img src="/static/images/{{pic_dic[attribute]}}.jpg"><h3><a href="/category/{{attribute}}">{{dic[attribute].decode('utf-8')}}</a></h3></li>
+{% endfor %}
+</ul>
+
+</div>
+</html>

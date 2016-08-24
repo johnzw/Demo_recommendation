@@ -1,0 +1,49 @@
+<html>
+
+<head>
+	<title>recommendation</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/recommend.css">
+</head>
+<body>
+<h1>猜您喜欢</h1>
+{% if recommendation_items%}
+<div class="main">
+
+	{% for item in recommendation_items%}
+	<div class = 'out_box'>
+		<div class="box">
+			<img src="/static/images/{{item}}.jpg">
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+if ($('#back-to-top').length) {
+    var scrollTrigger = 300 //px
+        backToTop = function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > scrollTrigger) {
+                $('#back-to-top').addClass('show');
+            } else {
+                $('#back-to-top').removeClass('show');
+            }
+        };
+    backToTop();
+    $(window).on('scroll', function () {
+        backToTop();
+    });
+    $('#back-to-top').on('click', function (e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+}
+</script>
+</body>
+</html>
