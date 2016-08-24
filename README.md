@@ -18,7 +18,7 @@ And it would get score of each items
 Now it is up to you how many items you want to recommend since you have the "recommendable score" of each item. For more details, please see ``` recommendation_engine.py ```
 
 ## Data
-data on item images and user purchase histories are provided by [Tianchi](https://tianchi.shuju.aliyun.com/competition/index.htm)
+data on item images and user purchase histories are provided by [Tianchi](https://tianchi.shuju.aliyun.com/competition/index.htm), a webiste like [Kaggle](https://www.kaggle.com/)
 
 ## How to use this Demo
 Once you have **flask** installed, just go to terminal and type:
