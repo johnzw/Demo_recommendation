@@ -9,8 +9,8 @@ import pickle
 import recommendation_engine
 
 app = Flask(__name__, static_url_path='/static')
-
 cache = defaultdict(list)
+
 #specify your base directory
 BASE_DIR = '/Users/john/Desktop/Demo'
 
@@ -115,50 +115,6 @@ def recommendation_remove(img_name):
 	recommended_items = recommendation_engine.recommend(cache[user_id],30)
 	return render_template('recommendation.html',recommendation_items=recommended_items)
 
-# @app.route("/scan/<file_path>/")
-# def scan_html(file_path):
-
-# 	frame = '''
-# 	<html>
-# 	<FRAMESET cols="80%%,20%%">
-# 		<FRAME src="/rawhtml/%s">
-# 		<FRAME src="/lable/%s">
-# 	</FRAMESET>
-# 	</html>
-# 	'''
-
-# 	frame = frame % (file_path,file_path)
-# 	return frame
-
-# @app.route("/rawhtml/<filename>/")
-# def raw_html(filename):
-# 	true_file = urllib.unquote(filename)
-# 	return app.send_static_file(true_file)
-
-# @app.route("/lable/<filename>/", methods=['GET', 'POST'])
-# def lable_html(filename):
-# 	#notice: unicode
-# 	prof_html = urllib.unquote(filename)
-
-# 	all_files =os.listdir(os.path.join(BASE_DIR,'static'))
-# 	index = all_files.index(prof_html.encode('utf-8'))
-
-# 	next_filehtml = None
-# 	items = None
-
-# 	#next file 
-# 	if index+1 < len(all_files):
-# 		next_filehtml = all_files[index+1]
-# 	if request.method == 'POST':
-# 		items = request.form.getlist('hello')
-# 		if items:
-# 			glo_dic[prof_html.encode('utf-8')] = items
-# 			write_dic()
-# 	prof = prof_html[:-5]
-# 	if prof_html.encode('utf-8') in glo_dic:
-# 		items = glo_dic[prof_html.encode('utf-8')]
-# 	return render_template('lable.html',prof=prof, next=next_filehtml,items=items)
-	
 if __name__ == "__main__":
 	# app.run(debug = True)
 	app.run(host= '0.0.0.0', port=9000)
